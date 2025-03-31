@@ -148,7 +148,7 @@ class InstallerController extends Controller
         return !empty($error)?$error:true;
         }
     }
-    protected function changeEnv($data = array()){
+    protected function changeEnv($data = []){
         if(count($data) > 0){
 
             // Read .env-file

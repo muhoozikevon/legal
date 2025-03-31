@@ -150,7 +150,7 @@ class DashBordController extends Controller
 							->distinct()
 							->get();
 
-					    $res=array();
+					    $res=[];
                       if(count($totalData)>0 && !empty($totalData)){
                         $arrCourt=$totalData;
 
@@ -336,7 +336,7 @@ class DashBordController extends Controller
 							->distinct()
 							 ->get();
 
-		$res=array();
+		$res=[];
 		if(count($totalData)>0 && !empty($totalData)){
 			$arrCourt=$totalData;
 			foreach($arrCourt as $key=>$case_detail){
@@ -404,7 +404,7 @@ class DashBordController extends Controller
               ->distinct()
               ->get();
 
-    $res=array();
+    $res=[];
     if(count($totalData)>0 && !empty($totalData)){
       $arrCourt=$totalData;
       foreach($arrCourt as $key=>$case_detail){
@@ -486,12 +486,12 @@ class DashBordController extends Controller
           }
 
 
-  $columns = array(
+  $columns = [
            0 => 'id',
             1 => 'name',
             2 => 'date',
             2 => 'time',
-         );
+         ];
 
 
           $totalData = DB::table('appointments AS a')
@@ -544,7 +544,7 @@ class DashBordController extends Controller
 
           $totalFiltered = $terms->count();
 
-          $data = array();
+          $data = [];
           if (!empty($terms)) {
 
             foreach ($terms as $term) {
@@ -563,12 +563,12 @@ class DashBordController extends Controller
            }
       }
 
-      $json_data = array(
+      $json_data = [
         "draw" => intval($request->input('draw')),
         "recordsTotal" => intval($totalData),
         "recordsFiltered" => intval($totalFiltered),
         "data" => $data
-    );
+    ];
 
       echo json_encode($json_data);
 

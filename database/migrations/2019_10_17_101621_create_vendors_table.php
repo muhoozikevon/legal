@@ -29,7 +29,7 @@ class CreateVendorsTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->text('gst')->nullable();
             $table->text('pan')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

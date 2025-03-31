@@ -17,7 +17,7 @@ class CreateCaseStatusesTable extends Migration
             $table->increments('id');
             $table->integer('advocate_id')->unsigned();
             $table->text('case_status_name')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

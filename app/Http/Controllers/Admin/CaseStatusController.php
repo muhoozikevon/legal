@@ -57,11 +57,11 @@ class CaseStatusController extends Controller
 
       
               // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'case_status_name',
             2 => 'is_active',
-        );
+        ];
 
 
         $totalData = CaseStatus::count();
@@ -131,12 +131,12 @@ class CaseStatusController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }

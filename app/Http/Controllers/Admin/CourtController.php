@@ -63,12 +63,12 @@ class CourtController extends Controller
 
       
               // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'court_type_id',
             2 => 'court_name',
             3 => 'is_active',
-        );
+        ];
 
 
         $totalData =DB::table('courts AS c')
@@ -153,12 +153,12 @@ class CourtController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }

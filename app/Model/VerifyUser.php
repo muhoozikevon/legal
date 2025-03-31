@@ -10,6 +10,6 @@ class VerifyUser extends Model
 
     public function advocate()
     {
-        return $this->belongsTo('App\Admin', 'advocate_id');
+        return $this->belongsTo(\App\Admin::class, 'advocate_id');
     }
 }

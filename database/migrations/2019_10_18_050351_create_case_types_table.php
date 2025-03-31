@@ -18,7 +18,7 @@ class CreateCaseTypesTable extends Migration
             $table->integer('advocate_id')->unsigned();
             $table->integer('parent_id')->unsigned();
             $table->text('case_type_name')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->bigInteger('amount')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

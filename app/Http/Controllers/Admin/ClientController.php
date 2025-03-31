@@ -58,14 +58,14 @@ class ClientController extends Controller
         $isEdit = $user->can('client_edit');
         $isDelete = $user->can('client_delete');
 
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'first_name',
             2 => 'mobile',
             3 => 'case',
             4 => 'is_active',
             5 => 'action',
-        );
+        ];
 
         $totalData = AdvocateClient::count(); // datata table count
 
@@ -124,12 +124,12 @@ class ClientController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
 
@@ -208,8 +208,8 @@ class ClientController extends Controller
     public function show($id)
     {
         //
-        $data['single'] = array();
-        $data['multiple'] = array();
+        $data['single'] = [];
+        $data['multiple'] = [];
         $data['client'] = AdvocateClient::find($id);
         $data['single'] = ClientPartiesInvoive::where('client_id', $id)->get();
         $clientName = AdvocateClient::findorfail($id);

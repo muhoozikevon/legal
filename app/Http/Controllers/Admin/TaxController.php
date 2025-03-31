@@ -58,11 +58,11 @@ class TaxController extends Controller
 
       
               // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'name',
             2 => 'per',
-        );
+        ];
 
 
         $totalData = AllTax::count();
@@ -146,12 +146,12 @@ class TaxController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }

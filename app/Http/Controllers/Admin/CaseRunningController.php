@@ -145,15 +145,15 @@ class CaseRunningController extends Controller
           |----------------
          */
 
-        $columns = array(
+        $columns = [
             0 => 'case_id',
             1 => 'first_name',
             5 => 'last_login_at',
             6 => 'is_active'
-        );
+        ];
 
         $advocate_id = 1;
-        $cond = array('case.advo_client_id' => $request->advocate_client_id);
+        $cond = ['case.advo_client_id' => $request->advocate_client_id];
         $totalData = DB::table('court_cases AS case')
             ->leftJoin('advocate_clients AS ac', 'ac.id', '=', 'case.advo_client_id')
             ->leftJoin('case_types AS ct', 'ct.id', '=', 'case.case_types')
@@ -246,7 +246,7 @@ class CaseRunningController extends Controller
           | Creating json array with all records based on input from front end site like all,searcheded,pagination record (i.e 10,20,50,100).
           |----------------------------------------------------------------------------------------------------------------------------------
          */
-        $data = array();
+        $data = [];
         if (!empty($cases)) {
             foreach ($cases as $key => $case) {
                 /**
@@ -335,12 +335,12 @@ class CaseRunningController extends Controller
                 $data[] = $nestedData;
             }
         }
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
     }
@@ -373,23 +373,23 @@ class CaseRunningController extends Controller
         $checkTask = LogActivity::CheckuserType();
 
         // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'case_id',
             1 => 'first_name',
             2 => 'last_login_at',
             3 => 'is_active'
-        );
+        ];
 
 
         $archived_case = '';
         if ($request->case_listing == 'running') {
-            $cond = array('case.is_active' => 'Yes', 'case.is_nb' => 'No');
+            $cond = ['case.is_active' => 'Yes', 'case.is_nb' => 'No'];
         } elseif ($request->case_listing == 'NB') {
-            $cond = array('case.is_nb' => 'Yes', 'case.is_active' => 'Yes');
+            $cond = ['case.is_nb' => 'Yes', 'case.is_active' => 'Yes'];
         } elseif ($request->case_listing == 'important') {
-            $cond = array('case.is_active' => 'Yes', 'case.is_nb' => 'No', 'priority' => 'High');
+            $cond = ['case.is_active' => 'Yes', 'case.is_nb' => 'No', 'priority' => 'High'];
         } else {
-            $cond = array('case.is_active' => 'No');
+            $cond = ['case.is_active' => 'No'];
             $archived_case .= 'Yes';
         }
 
@@ -564,12 +564,12 @@ class CaseRunningController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
 
@@ -805,7 +805,7 @@ class CaseRunningController extends Controller
         $admin = Admin::find(1);
 
 
-        $clientPar = array();
+        $clientPar = [];
         $clientPartiesInvoive = ClientPartiesInvoive::where('client_id', $client_id)->get();
         if (count($clientPartiesInvoive) && !empty($clientPartiesInvoive)) {
             foreach ($clientPartiesInvoive as $key => $value) {
@@ -819,7 +819,7 @@ class CaseRunningController extends Controller
         }
 
 
-        $mearge = array();
+        $mearge = [];
         $cli[0]['party_name'] = $client_single;
         $cli[0]['party_advocate'] = $admin->first_name . ' ' . $admin->last_name;
 
@@ -835,7 +835,7 @@ class CaseRunningController extends Controller
         }
         // $result=collect($case)->toArray();
 
-        $PetitiAndRespo = array();
+        $PetitiAndRespo = [];
         if ($client_position == "Petitioner") {
             $result['petitioner_and_advocate'] = $mearge;
             $result['respondent_and_advocate'] = $second;
@@ -902,7 +902,7 @@ class CaseRunningController extends Controller
         $data['users'] = Admin::where('user_type', '=', "User")->get();
 
 
-        $data['user_ids'] = array();
+        $data['user_ids'] = [];
 
         $data['user_ids'] = CaseMember::where('case_id', $id)->pluck('employee_id')->toArray();
 
@@ -1243,13 +1243,13 @@ class CaseRunningController extends Controller
     public function allCaseHistoryList(Request $request)
     {
         // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'registration_number',
             1 => 'judge',
             2 => 'business_on_date',
             3 => 'hearing_date',
             4 => 'purpose_of_hearing'
-        );
+        ];
 
         $case_id = $request->case_id;
 
@@ -1311,12 +1311,12 @@ class CaseRunningController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }
@@ -1331,13 +1331,13 @@ class CaseRunningController extends Controller
 
 
         // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'case_transfer_id',
             1 => 'registration_no',
             2 => 'transferDate',
             3 => 'judge_name',
             4 => 'to_court_no'
-        );
+        ];
 
         $case_id = $request->case_id;
 
@@ -1392,12 +1392,12 @@ class CaseRunningController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }
@@ -1442,7 +1442,7 @@ class CaseRunningController extends Controller
             ->where('cl.court_case_id', $id)
             ->get();
 
-        $data['history'] = array();
+        $data['history'] = [];
         if (count($getHistory) > 0 && !empty($getHistory)) {
             $data['history'] = $getHistory;
         }
@@ -1457,7 +1457,7 @@ class CaseRunningController extends Controller
             ->get();
 
 
-        $data['transfer'] = array();
+        $data['transfer'] = [];
         if (count($transfer) > 0 && !empty($transfer)) {
             $data['transfer'] = $transfer;
         }

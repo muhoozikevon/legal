@@ -128,13 +128,13 @@ class TaskController extends Controller
 
 
 
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'task_subject',
             3 => 'start_date',
             4 => 'end_date',
          
-        );
+        ];
          
          $totalData =  DB::table('tasks AS task')->count();
           $totalRec = $totalData;
@@ -268,12 +268,12 @@ class TaskController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
 
@@ -331,8 +331,8 @@ class TaskController extends Controller
     public function show($id)
     {
         //
-       $data['single']=array();
-       $data['multiple']=array();
+       $data['single']=[];
+       $data['multiple']=[];
        $data['client'] = AdvocateClient::find($id);
        // $data['country'] =$this->getCountryName($data['client']->country_id);
        // $data['state'] =$this->getStateName($data['client']->state_id);
@@ -383,7 +383,7 @@ class TaskController extends Controller
                         // dd($this->data['cases']);
 
 
-         $this->data['user_ids']=array();
+         $this->data['user_ids']=[];
 
          $this->data['user_ids']=TaskMember::where('task_id',$id)->pluck('employee_id')->toArray();
          // dd( $this->data['user_ids']);

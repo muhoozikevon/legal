@@ -212,11 +212,11 @@ class Controller extends BaseController
         
         if($change)
         {
-            echo json_encode(array("status" => TRUE));              
+            echo json_encode(["status" => TRUE]);              
         }
         else
         {
-            echo json_encode(array("status" => FALSE));              
+            echo json_encode(["status" => FALSE]);              
         }
     }
 

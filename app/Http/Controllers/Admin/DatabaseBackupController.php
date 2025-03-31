@@ -57,10 +57,10 @@ class DatabaseBackupController extends Controller
 
 
         // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'created_at',
-        );
+        ];
         
         $totalData = Dump::count();
         $totalRec = $totalData;
@@ -113,12 +113,12 @@ class DatabaseBackupController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }

@@ -59,7 +59,7 @@ class ExpenseController extends Controller
             | Listing colomns
             |----------------
            */
-        $columns = array(
+        $columns = [
             0 => 'expense_id',
             1 => 'invoice_no',
             2 => 'vendor_id',
@@ -67,7 +67,7 @@ class ExpenseController extends Controller
             4 => 'dueAmount',
             5 => 'inv_date',
             6 => 'inv_status',
-        );
+        ];
 
         //$advocate_id = $this->getLoginUserId();
 
@@ -134,7 +134,7 @@ class ExpenseController extends Controller
 
         }
 
-        $data = array();
+        $data = [];
         if (!empty($terms)) {
             foreach ($terms as $Key => $term) {
 
@@ -239,12 +239,12 @@ class ExpenseController extends Controller
             }
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
 
@@ -609,7 +609,7 @@ class ExpenseController extends Controller
        | Listing colomns
        |----------------
       */
-        $columns = array(
+        $columns = [
             0 => 'expense_id',
             1 => 'invoice_no',
             2 => 'vendor_id',
@@ -617,7 +617,7 @@ class ExpenseController extends Controller
             4 => 'dueAmount',
             5 => 'inv_date',
             6 => 'inv_status',
-        );
+        ];
 
 
         $totalData = DB::table('expenses AS e')
@@ -681,7 +681,7 @@ class ExpenseController extends Controller
 
         }
 
-        $data = array();
+        $data = [];
         if (!empty($terms)) {
             foreach ($terms as $Key => $term) {
 
@@ -790,12 +790,12 @@ class ExpenseController extends Controller
             }
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
 
@@ -833,7 +833,7 @@ class ExpenseController extends Controller
         $data['tax_amount'] = $data['invoice']->tax_amount;
         $data['total_amount'] = $data['invoice']->total_amount;
 
-        $data['json_to_array'] = array();
+        $data['json_to_array'] = [];
 
         // for gst
         if ($data['invoice']->tax_type == "GST" || $data['invoice']->tax_type == "IGST") {

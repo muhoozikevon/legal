@@ -360,24 +360,24 @@ class LogActivity
 
 	    public static function getTaskStatusList()
     {
-        $taskArr = array(
+        $taskArr = [
             'not_started' => 'Not Started',
             'in_progress' => 'In Progress',
             'completed' => 'Completed',
             'deferred' => 'Deferred',
             // 'waiting_for_someone' => 'Waiting For Someone',
-        );
+        ];
         return $taskArr;
     }
 
     public static function getTaskPriorityList()
     {
-        $taskPriorityArr = array(
+        $taskPriorityArr = [
             'low' => 'Low',
             'medium' => 'Medium',
             'high' => 'High',
             'urgent' => 'Urgent',
-        );
+        ];
         return $taskPriorityArr;
     }
 

@@ -41,13 +41,13 @@ class VendorController extends Controller
          $isEdit=$user->can('vendor_edit');
          $isDelete=$user->can('vendor_delete');
 
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'first_name',
             2 => 'mobile',
             3 => 'is_active',
             4 => 'action',
-        );
+        ];
         
        // $advocate_id = $this->getLoginUserId();
         $totalData = Vendor::count();
@@ -133,12 +133,12 @@ class VendorController extends Controller
         }
 
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
     }

@@ -27,7 +27,7 @@ class CreateTasksTable extends Migration
             $table->text('description');
             $table->text('checklist_complete_remarks')->nullable();
             $table->text('checklist_complete_signature')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->text('critical_comment')->nullable();
             $table->timestamps();
         });

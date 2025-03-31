@@ -59,12 +59,12 @@ class CashTypeController extends Controller
 
       
               // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'name',
             2 => 'parent_category',
             3 => 'is_active',
-        );
+        ];
 
 
         $totalData = DB::table('case_types AS c')
@@ -165,12 +165,12 @@ class CashTypeController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }
