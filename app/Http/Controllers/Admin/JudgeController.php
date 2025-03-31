@@ -58,11 +58,11 @@ class JudgeController extends Controller
 
       
               // Listing column to show
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'judge_name',
             2 => 'is_active',
-        );
+        ];
 
 
         $totalData = Judge::count();
@@ -129,12 +129,12 @@ class JudgeController extends Controller
 
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-        );
+        ];
 
         return response()->json($json_data);
     }

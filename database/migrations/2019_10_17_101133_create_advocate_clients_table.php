@@ -19,7 +19,7 @@ class CreateAdvocateClientsTable extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->enum('gender',array('Male','Female'));
+            $table->enum('gender',['Male','Female']);
             $table->string('email');
             $table->string('mobile');
             $table->string('alternate_no')->nullable();
@@ -29,8 +29,8 @@ class CreateAdvocateClientsTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->text('reference_name')->nullable();
             $table->text('reference_mobile')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
-            $table->enum('client_type',array('single','multiple'));
+            $table->enum('is_active',['Yes','No'])->default('Yes');
+            $table->enum('client_type',['single','multiple']);
             $table->timestamps();
         });
     }

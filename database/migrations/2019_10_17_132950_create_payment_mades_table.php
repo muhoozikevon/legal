@@ -20,7 +20,7 @@ class CreatePaymentMadesTable extends Migration
             $table->integer('invoice_id')->unsigned();
             $table->bigInteger('amount')->default('0');
             $table->date('receiving_date')->nullable();
-            $table->enum('payment_type',array('Cash','Cheque','Net Banking','Other'))->default('Cash');
+            $table->enum('payment_type',['Cash','Cheque','Net Banking','Other'])->default('Cash');
             $table->text('reference_number')->nullable();
             $table->dateTime('cheque_date')->nullable();
             $table->text('note')->nullable();

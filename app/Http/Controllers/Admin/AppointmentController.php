@@ -124,7 +124,7 @@ class AppointmentController extends Controller
           | Listing colomns
           |----------------
          */
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'name',
             2 => 'date',
@@ -132,7 +132,7 @@ class AppointmentController extends Controller
             4 => 'mobile',
             5 => 'is_active',
             6 => 'action',
-        );
+        ];
 
 
         $totalData = DB::table('appointments AS a')
@@ -188,7 +188,7 @@ class AppointmentController extends Controller
 
         $totalFiltered = $terms->count();
 
-        $data = array();
+        $data = [];
         if (!empty($terms)) {
 
             foreach ($terms as $term) {
@@ -284,12 +284,12 @@ class AppointmentController extends Controller
             }
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
     }

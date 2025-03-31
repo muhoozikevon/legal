@@ -18,7 +18,7 @@ class CreateExpenseCatsTable extends Migration
             $table->text('name');
             $table->text('description')->nullable();
             $table->integer('advocate_id')->unsigned();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

@@ -281,14 +281,14 @@ class clientUserController extends Controller
           |----------------
          */
 
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'name',
             2 => 'email',
             3 => 'mobile',
             4 => 'role_id',
             5 => 'is_active',
-        );
+        ];
         
         //$advocate_id = $this->getLoginUserId();
         
@@ -360,7 +360,7 @@ class clientUserController extends Controller
           | Creating json array with all records based on input from front end site like all,searcheded,pagination record (i.e 10,20,50,100).
           |----------------------------------------------------------------------------------------------------------------------------------
          */
-        $data = array();
+        $data = [];
         if (!empty($cats)) {
             foreach ($cats as $cat) {
 
@@ -424,12 +424,12 @@ class clientUserController extends Controller
         }
 
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
     }
@@ -489,7 +489,7 @@ class clientUserController extends Controller
             {
 				//Get email template content and replcae with value 
 				$verifyLink = url('admin/user/invitation', $insert_arr['link']);
-				$replace = array('{{link}}'=>$verifyLink,'{{email}}'=>$insert_arr['email'],'{{name}}'=>$insert_arr['name']);
+				$replace = ['{{link}}'=>$verifyLink,'{{email}}'=>$insert_arr['email'],'{{name}}'=>$insert_arr['name']];
 				$email_template = DB::table('emails')->where('id',4)->first();
 				$insert_arr['templateContent'] = $this->strReplaceAssoc($replace,$email_template->message_boddy);
 				

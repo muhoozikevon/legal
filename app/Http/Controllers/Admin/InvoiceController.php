@@ -298,7 +298,7 @@ class InvoiceController extends Controller
         $data['tax_amount'] = $data['invoice']->tax_amount;
         $data['total_amount'] = $data['invoice']->total_amount;
 
-        $data['json_to_array'] = array();
+        $data['json_to_array'] = [];
 
         $data['total_amount_world'] = $this->getIndianCurrency(round($data['invoice']->total_amount)) . " Only.";
 
@@ -363,14 +363,14 @@ class InvoiceController extends Controller
         | Listing colomns
         |----------------
        */
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'invoice_no',
             2 => 'client_id',
             3 => 'total_amount',
             4 => 'dueAmount',
             5 => 'inv_status',
-        );
+        ];
 
         $totalData = DB::table('invoices AS i')
             ->where('i.is_active', 'Yes')
@@ -432,7 +432,7 @@ class InvoiceController extends Controller
 
         }
 
-        $data = array();
+        $data = [];
         if (!empty($terms)) {
             foreach ($terms as $Key => $term) {
                 /**
@@ -541,12 +541,12 @@ class InvoiceController extends Controller
             }
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
     }
@@ -565,13 +565,13 @@ class InvoiceController extends Controller
         | Listing colomns
         |----------------
        */
-        $columns = array(
+        $columns = [
             0 => 'id',
             1 => 'client_id',
             2 => 'total_amount',
             3 => 'due_amount',
             4 => 'inv_status',
-        );
+        ];
 
         //$advocate_id = $this->getLoginUserId();
 
@@ -640,7 +640,7 @@ class InvoiceController extends Controller
 
         }
 
-        $data = array();
+        $data = [];
         if (!empty($terms)) {
             foreach ($terms as $Key => $term) {
                 /**
@@ -752,12 +752,12 @@ class InvoiceController extends Controller
             }
         }
 
-        $json_data = array(
+        $json_data = [
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
+        ];
 
         echo json_encode($json_data);
     }
@@ -767,9 +767,9 @@ class InvoiceController extends Controller
         $client_id = $request->client_id;
         $advoClient = AdvocateClient::find($client_id);
         if ($advoClient->email == "") {
-            $json_data = array("success" => false);
+            $json_data = ["success" => false];
         } else {
-            $json_data = array("success" => true);
+            $json_data = ["success" => true];
 
         }
         return response()->json($json_data, 200);
@@ -908,7 +908,7 @@ class InvoiceController extends Controller
         $setting->save();
 
 
-        $resp = array();
+        $resp = [];
 
         if (!empty($request->invoice_items) && count($request->invoice_items) > 0) {
             foreach ($request->invoice_items as $key => $value) {
@@ -972,7 +972,7 @@ class InvoiceController extends Controller
         if ($term_condition->term_condition != "") {
             $data['myTerm'] = explode('##', $term_condition->term_condition);
         }
-        $data['json_to_array'] = array();
+        $data['json_to_array'] = [];
 
         // for gst
         if ($data['invoice']->tax_type == "GST" || $data['invoice']->tax_type == "IGST") {
@@ -1244,8 +1244,8 @@ class InvoiceController extends Controller
         $hundred = null;
         $digits_length = strlen($no);
         $i = 0;
-        $str = array();
-        $words = array(0 => '', 1 => 'one', 2 => 'two',
+        $str = [];
+        $words = [0 => '', 1 => 'one', 2 => 'two',
             3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six',
             7 => 'seven', 8 => 'eight', 9 => 'nine',
             10 => 'ten', 11 => 'eleven', 12 => 'twelve',
@@ -1253,8 +1253,8 @@ class InvoiceController extends Controller
             16 => 'sixteen', 17 => 'seventeen', 18 => 'eighteen',
             19 => 'nineteen', 20 => 'twenty', 30 => 'thirty',
             40 => 'forty', 50 => 'fifty', 60 => 'sixty',
-            70 => 'seventy', 80 => 'eighty', 90 => 'ninety');
-        $digits = array('', 'hundred', 'thousand', 'lakh', 'crore');
+            70 => 'seventy', 80 => 'eighty', 90 => 'ninety'];
+        $digits = ['', 'hundred', 'thousand', 'lakh', 'crore'];
         while ($i < $digits_length) {
             $divider = ($i == 2) ? 10 : 100;
             $number = floor($no % $divider);

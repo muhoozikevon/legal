@@ -22,14 +22,14 @@ class CreateExpensesTable extends Migration
             $table->text('tax_amount')->nullable();
             $table->text('total_amount');
             $table->integer('tax_id')->unsigned()->nullable();
-            $table->enum('inv_status',array('Due','Partially Paid','Paid'))->default('Due');
+            $table->enum('inv_status',['Due','Partially Paid','Paid'])->default('Due');
             $table->date('due_date');
             $table->date('inv_date');
             $table->text('remarks')->nullable();
             $table->string('tax_type')->nullable();
             $table->text('json_content')->nullable();
             $table->integer('invoice_created_by')->unsigned();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

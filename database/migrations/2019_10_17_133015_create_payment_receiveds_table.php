@@ -21,7 +21,7 @@ class CreatePaymentReceivedsTable extends Migration
             $table->integer('receipt_number')->unsigned()->nullable();
             $table->bigInteger('amount');
             $table->dateTime('receiving_date');
-            $table->enum('payment_type',array('Cash','Cheque','Net Banking','Other'))->default('Cash');
+            $table->enum('payment_type',['Cash','Cheque','Net Banking','Other'])->default('Cash');
             $table->dateTime('cheque_date')->nullable();
             $table->text('reference_number')->nullable();
             $table->text('note')->nullable();

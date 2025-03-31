@@ -89,7 +89,7 @@ class PermissionController extends Controller
             // dd($request->all());
          $role  =  Role::find($id) ;        
 
-        $permissions = ($request->has('permission')) ? $request->permission : array() ;
+        $permissions = ($request->has('permission')) ? $request->permission : [] ;
 
 
         $role->permissions()->detach();

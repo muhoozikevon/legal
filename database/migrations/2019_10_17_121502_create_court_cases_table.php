@@ -17,7 +17,7 @@ class CreateCourtCasesTable extends Migration
             $table->increments('id');
             $table->integer('advocate_id')->unsigned();
             $table->integer('advo_client_id')->unsigned();
-            $table->enum('client_position',array('Respondent','Petitioner'));
+            $table->enum('client_position',['Respondent','Petitioner']);
             $table->text('party_name');
             $table->text('party_lawyer');
             $table->text('case_number')->nullable();
@@ -25,7 +25,7 @@ class CreateCourtCasesTable extends Migration
             $table->integer('case_sub_type')->unsigned()->nullable();
             $table->integer('case_status')->unsigned();
             $table->text('act')->nullable();
-            $table->enum('priority',array('High','Medium','Low'))->default('Low');
+            $table->enum('priority',['High','Medium','Low'])->default('Low');
             $table->text('court_no');
             $table->integer('court_type')->unsigned();
             $table->integer('court')->unsigned();
@@ -44,10 +44,10 @@ class CreateCourtCasesTable extends Migration
             $table->text('police_station')->nullable();
             $table->text('fir_number')->nullable();
             $table->date('fir_date')->nullable();
-            $table->enum('is_nb',array('Yes','No'))->default('No');
+            $table->enum('is_nb',['Yes','No'])->default('No');
             $table->date('decision_date')->nullable();
             $table->text('nature_disposal')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

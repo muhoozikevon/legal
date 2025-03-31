@@ -17,7 +17,7 @@ class CreateCourtTypesTable extends Migration
             $table->increments('id');
             $table->integer('advocate_id')->unsigned();
             $table->text('court_type_name')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

@@ -17,13 +17,13 @@ class CreateAppointmentsTable extends Migration
             $table->increments('id');
             $table->integer('client_id')->unsigned()->nullable();
             $table->integer('advocate_id')->unsigned()->nullable();
-            $table->enum('type',array('new','exists'))->default('new');
+            $table->enum('type',['new','exists'])->default('new');
             $table->date('date');
             $table->time('time');
             $table->string('mobile');
             $table->string('name')->nullable();
             $table->text('note')->nullable();
-            $table->enum('is_active',array('OPEN','CANCEL BY CLIENT','CANCEL BY ADVOCA'))->default('OPEN');
+            $table->enum('is_active',['OPEN','CANCEL BY CLIENT','CANCEL BY ADVOCA'])->default('OPEN');
             $table->timestamps();
         });
     }

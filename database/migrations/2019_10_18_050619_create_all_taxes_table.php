@@ -19,7 +19,7 @@ class CreateAllTaxesTable extends Migration
             $table->text('name')->nullable();
             $table->text('per')->nullable();
             $table->text('note')->nullable();
-            $table->enum('is_active',array('Yes','No'))->default('Yes');
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }

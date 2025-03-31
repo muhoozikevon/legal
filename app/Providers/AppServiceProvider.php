@@ -26,19 +26,19 @@ class AppServiceProvider extends ServiceProvider
 
                 if ($mail) //checking if table is not empty
                 {
-                    $config = array(
+                    $config = [
                         'driver'     => 'SMTP',
                         'host'       => $mail->mail_host,
                         'port'       => $mail->mail_port,
-                        'from'       => array(
+                        'from'       => [
                             'address' => $mail->mail_username,
                             'name' => "Advocate"
-                        ),
+                        ],
                         'encryption' => $mail->mail_encryption,
                         'username'   => $mail->mail_username,
                         'password'   => $mail->mail_password
                         // 'bcc'        => $mail->bcc_mail
-                    );
+                    ];
                     Config::set('mail', $config);
                     // dd(config());
                 }

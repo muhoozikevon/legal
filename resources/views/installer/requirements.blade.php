@@ -14,7 +14,7 @@ $latestLaravelVersion = '6.0';
 
 $laravelVersion = (isset($_GET['v'])) ? (string)$_GET['v'] : $latestLaravelVersion;
 
-if (!in_array($laravelVersion, array('4.2', '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '6.0'))) {
+if (!in_array($laravelVersion, ['4.2', '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '6.0'])) {
     $laravelVersion = $latestLaravelVersion;
 }
 
@@ -24,8 +24,8 @@ When using Ubuntu, this can be done via apt-get install php5-json.';
 $laravel50Obs = 'PHP version should be < 7. As of PHP 5.5, some OS distributions may require you to manually install the PHP JSON extension.
 When using Ubuntu, this can be done via apt-get install php5-json';
 
-$reqList = array(
-    '4.2' => array(
+$reqList = [
+    '4.2' => [
         'php' => '5.4',
         'mcrypt' => true,
         'pdo' => false,
@@ -36,8 +36,8 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => $laravel42Obs
-    ),
-    '5.0' => array(
+    ],
+    '5.0' => [
         'php' => '5.4',
         'mcrypt' => true,
         'openssl' => true,
@@ -48,8 +48,8 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => $laravel50Obs
-    ),
-    '5.1' => array(
+    ],
+    '5.1' => [
         'php' => '5.5.9',
         'mcrypt' => false,
         'openssl' => true,
@@ -60,12 +60,12 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => ''
-    ),
-    '5.2' => array(
-        'php' => array(
+    ],
+    '5.2' => [
+        'php' => [
             '>=' => '5.5.9',
             '<' => '7.2.0',
-        ),
+        ],
         'mcrypt' => false,
         'openssl' => true,
         'pdo' => true,
@@ -75,12 +75,12 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => ''
-    ),
-    '5.3' => array(
-        'php' => array(
+    ],
+    '5.3' => [
+        'php' => [
             '>=' => '5.6.4',
             '<' => '7.2.0',
-        ),
+        ],
         'mcrypt' => false,
         'openssl' => true,
         'pdo' => true,
@@ -90,8 +90,8 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => ''
-    ),
-    '5.4' => array(
+    ],
+    '5.4' => [
         'php' => '5.6.4',
         'mcrypt' => false,
         'openssl' => true,
@@ -102,8 +102,8 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => ''
-    ),
-    '5.5' => array(
+    ],
+    '5.5' => [
         'php' => '7.0.0',
         'mcrypt' => false,
         'openssl' => true,
@@ -114,8 +114,8 @@ $reqList = array(
         'ctype' => false,
         'json' => false,
         'obs' => ''
-    ),
-    '5.6' => array(
+    ],
+    '5.6' => [
         'php' => '7.1.3',
         'mcrypt' => false,
         'openssl' => true,
@@ -126,8 +126,8 @@ $reqList = array(
         'ctype' => true,
         'json' => true,
         'obs' => ''
-    ),
-    '5.7' => array(
+    ],
+    '5.7' => [
         'php' => '7.1.3',
         'mcrypt' => false,
         'openssl' => true,
@@ -138,8 +138,8 @@ $reqList = array(
         'ctype' => true,
         'json' => true,
         'obs' => ''
-    ),
-    '5.8' => array(
+    ],
+    '5.8' => [
         'php' => '7.1.3',
         'mcrypt' => false,
         'openssl' => true,
@@ -150,8 +150,8 @@ $reqList = array(
         'ctype' => true,
         'json' => true,
         'obs' => ''
-    ),
-    '6.0' => array(
+    ],
+    '6.0' => [
         'php' => '7.2.0',
         'mcrypt' => false,
         'openssl' => true,
@@ -163,15 +163,15 @@ $reqList = array(
         'json' => true,
         'bcmath' => true,
         'obs' => ''
-    ),
-);
+    ],
+];
 
 
 $strOk = '<i class="fa fa-check"></i>';
 $strFail = '<i style="color: red" class="fa fa-times"></i>';
 $strUnknown = '<i class="fa fa-question"></i>';
 
-$requirements = array();
+$requirements = [];
 
 
 // PHP Version
@@ -244,7 +244,7 @@ if (function_exists('apache_get_modules')) {
                                 <div class="icheckbox_flat-green" style="position: relative;"></div>
                                 PHP <?php
                                 if (is_array($reqList[$laravelVersion]['php'])) {
-                                    $phpVersions = array();
+                                    $phpVersions = [];
                                     foreach ($reqList[$laravelVersion]['php'] as $operator => $version) {
                                         $phpVersions[] = "{$operator} {$version}";
                                     }

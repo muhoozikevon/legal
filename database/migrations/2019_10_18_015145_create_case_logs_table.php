@@ -24,7 +24,7 @@ class CreateCaseLogsTable extends Migration
             $table->dateTime('bussiness_on_date')->nullable();
             $table->dateTime('hearing_date')->nullable();
             $table->text('remark')->nullable();
-            $table->enum('is_transfer',array('Yes','No'))->default('No');
+            $table->enum('is_transfer',['Yes','No'])->default('No');
             $table->integer('transfer_judge_type')->unsigned()->nullable();
             $table->text('transfer_court_no')->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
