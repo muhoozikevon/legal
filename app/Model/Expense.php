@@ -8,6 +8,6 @@ class Expense extends Model
 {
     public function expense_iteam()
     {
-        return $this->hasMany('App\Model\ExpensesItem','invoice_id','id');
+        return $this->hasMany(\App\Model\ExpensesItem::class,'invoice_id','id');
     }
 }
